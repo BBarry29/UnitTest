@@ -4,7 +4,6 @@
 
 
 namespace CustomListProject
-
 {
     class MyCustomList<T> : IEnumerable<T>
     {
