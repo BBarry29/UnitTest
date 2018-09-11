@@ -1,4 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using CustomListProject;
+
 
 namespace UnitTestProject1
 {
@@ -6,46 +8,39 @@ namespace UnitTestProject1
     public class UnitTest1
     {
         [TestMethod]
-        public void TestMethod1()
+        public void Add_IntToList()         
         {
-            public void Add_EvenIntValueToIndex3()
-            {
-                CustomList<int> test = new CustomList<int>();
-                //arrange
+            //arrange
+            MyCustomList<int> test  = new MyCustomList<int>();
+            int expectedResult1 = 2;
+            int expectedResult2 = 3;
 
-                test.Add(2);
-                test.Add(4);
-                test.Add(6);
+            //act
+            test.Add(expectedResult1);
+            test.Add(expectedResult2);
 
-                int expectedResult = 8;
-
-                //act
-
-                test.Add(8);
-                CustomList<int> actual = test.Add(8);
-
-                //assert
-                //insert 8 into [3]
-                Assert.AreEqual(expectedResult, actual[3]);
-            }
-
+            //assert
+            Assert.AreEqual(expectedResult1,)
+        }
+        
 
             public void Add_ValueToIndex4()
             {
-                CustomList<int> test = new CustomList<int>();
                 //arrange
+                MyCustomList<int> test = new MyCustomList<int>();
+                
 
                 test.Add(2); //1 * 2
                 test.Add(6); //2 * 3
                 test.Add(12); //3 * 4
                 test.Add(20); //4 * 5
-                              //(30) // 5 * 6                
+                      //(30) // 5 * 6                
                 int expectedResult = 30;
 
                 //act
 
                 test.Add(30);
-                CustomList<int> actual = test.Add(30);
+                MyCustomList<int> actual = test.Add(30);
 
                 //assert
                 // add 30 into [4], result of 5 * 6
@@ -55,7 +50,7 @@ namespace UnitTestProject1
 
             public void Add_MissingIntToIndex2()
             {
-                CustomList<int> test = new CustomList<int>();
+                MyCustomList<int> test = new MyCustomList<int>();
                 //arrange
 
                 test.Add(1);
@@ -68,7 +63,7 @@ namespace UnitTestProject1
                 //act
 
                 test.Add(3);
-                CustomList<int> actual = test.Add(3);
+                MyCustomList<int> actual = test.Add(3);
                 //assert
                 // add 3 to [2]
                 Assert.AreEqual(expectedResult, actual[2]);
@@ -77,7 +72,7 @@ namespace UnitTestProject1
 
             public void Add_ValueCheckIndex0()
             {
-                CustomList<int> test = new CustomList<int>();
+                MyCustomList<int> test = new MyCustomList<int>();
                 //arrange
 
                 test.Add(1);
@@ -90,7 +85,7 @@ namespace UnitTestProject1
                 //act
 
                 test.Add(0);
-                CustomList<int> actual = test.Add(0);
+                MyCustomList<int> actual = test.Add(0);
 
                 //assert
                 //insert 0 into [0]
@@ -100,7 +95,7 @@ namespace UnitTestProject1
 
             public void Add_ValueToIndex3()
             {
-                CustomList<int> test = new CustomList<int>();
+                MyCustomList<int> test = new MyCustomList<int>();
                 //arrange
 
                 test.Add(1);
@@ -124,7 +119,7 @@ namespace UnitTestProject1
 
             public void Remove_ValueFromIndex0()
             {
-                CustomList<int> test = new CustomList<int>();
+                MyCustomList<int> test = new MyCustomList<int>();
                 //arrange
 
                 test.Add(1);
@@ -133,12 +128,12 @@ namespace UnitTestProject1
                 test.Add(7);
 
                 int expectedResult = 7;
-                CustomList<int> actual = test.Add(7);
+                MyCustomList<int> actual = test.Add(7);
 
                 //act
 
                 test.Remove(7);
-                CustomList<int> actual = test.Add(7);
+                MyCustomList<int> actual = test.Add(7);
 
 
                 //assert
@@ -149,7 +144,7 @@ namespace UnitTestProject1
 
             public void Remove_StringFromIndex()
             {
-                CustomList<string> test = new CustomList<string>();
+                MyCustomList<string> test = new MyCustomList<string>();
                 //arrange
 
                 test.Add("one");
@@ -164,7 +159,7 @@ namespace UnitTestProject1
                 //act
 
                 test.Remove("three");
-                CustomList<string> actual = test.Add("three");
+                MyCustomList<string> actual = test.Add("three");
 
 
                 //assert
@@ -176,7 +171,7 @@ namespace UnitTestProject1
             public void Remove_IntValueFromIndex()
             {
 
-                CustomList<int> test = new CustomList<int>();
+                MyCustomList<int> test = new MyCustomList<int>();
                 //arrange
 
                 test.Add(1);
@@ -191,7 +186,7 @@ namespace UnitTestProject1
                 //act
                 test.Remove(2);
                 test.RemoveAt(1);
-                CustomList<int> actual = test.Add(2) - test.Add(3) - test.Add(4);
+                MyCustomList<int> actual = test.Add(2) - test.Add(3) - test.Add(4);
 
 
                 //assert
@@ -204,7 +199,7 @@ namespace UnitTestProject1
 
             public void Remove_SingleStringFromIndex()
             {
-                CustomList<string> test = new CustomList<string>();
+                MyCustomList<string> test = new CustomList<string>();
                 //arrange
 
                 test.Add("one");
@@ -254,9 +249,9 @@ namespace UnitTestProject1
             public void Add_MultipleLists()
             {
                 //arange
-                CustomList<int> test1 = new CustomList<int>();
-                CustomList<int> test2 = new CustomList<int>();
-                CustomList<int> test3 = new CustomList<int>();
+                MyCustomList<int> test1 = new MyCustomList<int>();
+                MyCustomList<int> test2 = new MyCustomList<int>();
+                MyCustomList<int> test3 = new MyCustomList<int>();
 
                 test1.Add(5);
                 test1.Add(10);
@@ -275,11 +270,12 @@ namespace UnitTestProject1
                 test3.Add(75);
 
                 int expectedResult = test1 + test2 + test3;
-                CustomList<int> actual = test1 + test2 + test3;
+                MyCustomList<int> actual = test1 + test2 + test3;
 
                 //act
 
                 Assert.AreEqual(expectedResult, actual[0, 0]);
             }
+        }
     }
 }
