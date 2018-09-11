@@ -1,25 +1,31 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using CustomListProject;
+using System.Linq;
 
 namespace UnitTestProject1
 {
     [TestClass]
     public class UnitTest1
     {
-        [TestMethod]
+        
         public void Add_IntToList()         
         {
             //arrange
             MyCustomList<int> test  = new MyCustomList<int>();
-            int expectedResult1 = 2;
-            int expectedResult2 = 3;
+            test.Add(1);
+            test.Add(2);
+            test.Add(3);
+            test.Add(4);
+            test.Add(5);
+            
+            int expectedResult = 6;
 
+  
             //act
-            test.Add(expectedResult1);
-            test.Add(expectedResult2);
+            test.Add(expectedResult, test[5]);
+
 
             //assert
-            Assert.AreEqual(expectedResult1,)
+            Assert.AreEqual(expectedResult, test1[5]);
         }
         
 
@@ -33,7 +39,7 @@ namespace UnitTestProject1
                 test.Add(6); //2 * 3
                 test.Add(12); //3 * 4
                 test.Add(20); //4 * 5
-                      //(30) // 5 * 6               
+                      //(30) // 5 * 6                
                 int expectedResult = 30;
 
                 //act
@@ -74,16 +80,16 @@ namespace UnitTestProject1
                 MyCustomList<int> test = new MyCustomList<int>();
                 //arrange
 
-                test.Add(1);
-                test.Add(2);
-                test.Add(3);
-                test.Add(4);
+                test4.Add(1);
+                test4.Add(2);
+                test4.Add(3);
+                test4.Add(4);
 
                 int expectedResult = 0;
 
                 //act
 
-                test.Add(0);
+                test4.Add(0);
                 MyCustomList<int> actual = test.Add(0);
 
                 //assert
@@ -94,21 +100,21 @@ namespace UnitTestProject1
 
             public void Add_ValueToIndex3()
             {
-                MyCustomList<int> test = new MyCustomList<int>();
+                MyCustomList<int> test5 = new MyCustomList<int>();
                 //arrange
 
-                test.Add(1);
-                test.Add(3);
-                test.Add(5);
-                test.Add(9);
+                test5.Add(1);
+                test5.Add(3);
+                test5.Add(5);
+                test5.Add(9);
 
                 int expectedResult = 7;
 
                 //act
 
-                test.Add(7);
-                test.Count();
-                CustomList<int> actual = test.Add(7);
+                test5.Add(7);
+                test5.Count();
+                MyCustomList<int> actual = test5.Add(7);
 
                 //assert
                 //insert 7 into [3], insert 9 into [4]
@@ -116,81 +122,97 @@ namespace UnitTestProject1
             }
 
 
-            public void Remove_ValueFromIndex0()
+            public void Remove_ValuesFromIndex()
             {
                 MyCustomList<int> test = new MyCustomList<int>();
-                //arrange
+               //arrange
 
-                test.Add(1);
-                test.Add(3);
-                test.Add(5);
-                test.Add(7);
+               test.Remove(1);
+               test.Remove(3);
+               test.Remove(5);
+               test.Remove(7);
+               test.Remove(7);
+               test.Remove(9);
+               test.Remove(11);
+               test.Remove(13);
+               test.Remove(15);
 
-                int expectedResult = 7;
-                MyCustomList<int> actual = test.Add(7);
+                
+                
 
-                //act
-
-                test.Remove(7);
-                MyCustomList<int> actual = test.Add(7);
+            int expectedResult = 7;
 
 
-                //assert
+            //act
+            MyCustomList<int> actual = test.Remove(7);
 
-                Assert.AreEqual(expectedResult, actual[3]);
+            //assert
+
+            Assert.AreEqual(expectedResult, actual[3]);
             }
 
 
             public void Remove_StringFromIndex()
             {
                 MyCustomList<string> test = new MyCustomList<string>();
-                //arrange
-
-                test.Add("one");
-                test.Add("three");
-                test.Add("five");
-                test.Add("seven");
+            //arrange
 
 
+            test.Remove("one");
+            test.Remove("three");
+            test.Remove("five");
+            test.Remove("seven");
+            test.Remove("nine");
+            test.Remove("eleven");
+            test.Remove("three");
+            test.Remove("thirteen");
+            test.Remove("fifteen");
+            test.Remove("seventeen");
+            test.Remove("nineteen");
 
-                string expectedResult = "three";
-
-                //act
-
-                test.Remove("three");
-                MyCustomList<string> actual = test.Add("three");
 
 
-                //assert
+            string expectedResult = "three";
 
-                Assert.AreEqual(expectedResult, actual[1]);
+             //act
+
+            test.Remove("three");
+            MyCustomList<string> test = new MyCustomList<string>();
+
+
+            //assert
+
+            Assert.AreEqual(expectedResult, test[6]);
             }
 
 
-            public void Remove_IntValueFromIndex()
+            public void Remove_ValueFromIndex()
             {
 
                 MyCustomList<int> test = new MyCustomList<int>();
-                //arrange
+            //arrange
 
-                test.Add(1);
-                test.Add(2);
-                test.Add(3);
-                test.Add(4);
+            test.Remove(5);
+            test.Remove(10);
+            test.Remove(15);
+            test.Remove(20);
+            test.Remove(25);
+            test.Remove(30);
+            test.Remove(35);
 
 
 
-                int expectedResult = 1 - 3;
+            int expectedResult = 30 - 35;
 
-                //act
-                test.Remove(2);
-                test.RemoveAt(1);
-                MyCustomList<int> actual = test.Add(2) - test.Add(3) - test.Add(4);
+            //act
+            test.Remove(10);
+            test.RemoveAt(5);
+            MyCustomList<int> actual = test.Remove(30); test.Remove(35);
 
 
                 //assert
-                //remove ints 2, 3, 4, at [1, 2, 3]
-                Assert.AreEqual(expectedResult, actual[1, 2, 3]);
+                //remove ints 30, 35 [5, 6]
+                Assert.AreEqual(expectedResult, test[1, 2, 3]);
             }
 
 
@@ -198,7 +220,7 @@ namespace UnitTestProject1
 
             public void Remove_SingleStringFromIndex()
             {
-                MyCustomList<string> test = new CustomList<string>();
+                MyCustomList<string> test = new MyCustomList<string>();
                 //arrange
 
                 test.Add("one");
@@ -218,12 +240,12 @@ namespace UnitTestProject1
 
                 //assert
 
-                Assert.AreEqual(expectedResult, actual[3]);
+                Assert.AreEqual(expectedResult, test[3]);
             }
 
             public void Remove_MultipleValuesFromIndex()
             {
-                CustomList<int> test = new CustomList<int>();
+                MyCustomList<int> test = new MyCustomList<int>();
                 //arrange
 
                 test.Add(1);
@@ -236,10 +258,10 @@ namespace UnitTestProject1
                 //act
                 test.Remove(2);
                 test.RemoveAt(2);
-                CustomList<int> actual = test.Add(6) + test.Add(8);
+                MyCustomList<int> actual = test.Add(6) + test.Add(8);
                 //assert
                 //remove ints 6, 8 at [2, 3]
-                Assert.AreEqual(expectedResult, actual[2, 3]);
+                Assert.AreEqual(expectedResult, test[2, 3]);
             }
 
 
