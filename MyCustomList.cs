@@ -1,10 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 
 
 
 namespace CustomListProject
+
 {
+    [TestMethod]
     class MyCustomList<T> : IEnumerable<T>
     {
         T[] items;
@@ -35,15 +39,32 @@ namespace CustomListProject
             capacity = 5;
             items = new T[capacity];
         }
+
+        [TestMethod]
         public void AddMethod(T item)
         {
-            if (count > capacity / 2)
+            if (count > capacity)
             {
-                DoubleArraySize();
+
             }
-            items[count] = item;
-            count++;
+            
+               
+          
         }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            throw new System.NotImplementedException();
+        }
+    }
+
+    internal class TestMethodAttribute : Attribute
+    {
     }
 }
         
