@@ -1,7 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CustomListProject;
 
-
 namespace UnitTestProject1
 {
     [TestClass]
@@ -34,7 +33,7 @@ namespace UnitTestProject1
                 test.Add(6); //2 * 3
                 test.Add(12); //3 * 4
                 test.Add(20); //4 * 5
-                      //(30) // 5 * 6                
+                      //(30) // 5 * 6               
                 int expectedResult = 30;
 
                 //act
