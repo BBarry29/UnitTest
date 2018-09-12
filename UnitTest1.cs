@@ -1,302 +1,254 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
+using CustomListProject;
 
 namespace UnitTestProject1
 {
     [TestClass]
     public class UnitTest1
     {
-        
-        public void Add_IntToList()         
+        [TestMethod]
+        public void Add_TwoIntsToList()         
         {
             //arrange
             MyCustomList<int> test  = new MyCustomList<int>();
-            test.Add(1);
-            test.Add(2);
-            test.Add(3);
-            test.Add(4);
-            test.Add(5);
-            
-            int expectedResult = 6;
 
-  
+            int item1 = 6;
+            int item2 = 5;
+
             //act
-            test.Add(expectedResult, test[5]);
-
-
+            test.Add(item1);
+            test.Add(item2);
+            
             //assert
-            Assert.AreEqual(expectedResult, test1[5]);
+            Assert.AreEqual(item1, test[0]);
         }
         
-
-            public void Add_ValueToIndex4()
+            [TestMethod]
+            public void Add_MultipleStringsToList()
             {
-                //arrange
-                MyCustomList<int> test = new MyCustomList<int>();
-                
-
-                test.Add(2); //1 * 2
-                test.Add(6); //2 * 3
-                test.Add(12); //3 * 4
-                test.Add(20); //4 * 5
-                      //(30) // 5 * 6                
-                int expectedResult = 30;
-
-                //act
-
-                test.Add(30);
-                MyCustomList<int> actual = test.Add(30);
-
-                //assert
-                // add 30 into [4], result of 5 * 6
-                Assert.AreEqual(expectedResult, actual[4]);
-            }
-
-
-            public void Add_MissingIntToIndex2()
-            {
-                MyCustomList<int> test = new MyCustomList<int>();
-                //arrange
-
-                test.Add(1);
-                test.Add(2);
-                test.Add(4);
-                test.Add(5);
-
-                int expectedResult = 3;
-
-                //act
-
-                test.Add(3);
-                MyCustomList<int> actual = test.Add(3);
-                //assert
-                // add 3 to [2]
-                Assert.AreEqual(expectedResult, actual[2]);
-            }
-
-
-            public void Add_ValueCheckIndex0()
-            {
-                MyCustomList<int> test = new MyCustomList<int>();
-                //arrange
-
-                test4.Add(1);
-                test4.Add(2);
-                test4.Add(3);
-                test4.Add(4);
-
-                int expectedResult = 0;
-
-                //act
-
-                test4.Add(0);
-                MyCustomList<int> actual = test.Add(0);
-
-                //assert
-                //insert 0 into [0]
-                Assert.AreEqual(expectedResult, actual[0]);
-            }
-
-
-            public void Add_ValueToIndex3()
-            {
-                MyCustomList<int> test5 = new MyCustomList<int>();
-                //arrange
-
-                test5.Add(1);
-                test5.Add(3);
-                test5.Add(5);
-                test5.Add(9);
-
-                int expectedResult = 7;
-
-                //act
-
-                test5.Add(7);
-                test5.Count();
-                MyCustomList<int> actual = test5.Add(7);
-
-                //assert
-                //insert 7 into [3], insert 9 into [4]
-                Assert.AreEqual(expectedResult, actual[3]);
-            }
-
-
-            public void Remove_ValuesFromIndex()
-            {
-                MyCustomList<int> test = new MyCustomList<int>();
-               //arrange
-
-               test.Remove(1);
-               test.Remove(3);
-               test.Remove(5);
-               test.Remove(7);
-               test.Remove(7);
-               test.Remove(9);
-               test.Remove(11);
-               test.Remove(13);
-               test.Remove(15);
-
-                
-                
-
-            int expectedResult = 7;
-
-
-            //act
-            MyCustomList<int> actual = test.Remove(7);
-
-            //assert
-
-            Assert.AreEqual(expectedResult, actual[3]);
-            }
-
-
-            public void Remove_StringFromIndex()
-            {
-                MyCustomList<string> test = new MyCustomList<string>();
             //arrange
-
-
-            test.Remove("one");
-            test.Remove("three");
-            test.Remove("five");
-            test.Remove("seven");
-            test.Remove("nine");
-            test.Remove("eleven");
-            test.Remove("three");
-            test.Remove("thirteen");
-            test.Remove("fifteen");
-            test.Remove("seventeen");
-            test.Remove("nineteen");
-
-
-
-            string expectedResult = "three";
-
-             //act
-
-            test.Remove("three");
             MyCustomList<string> test = new MyCustomList<string>();
 
+            string item1 = "December";
+            string item2 = "May";
+            string item3 = "October";
+            string item4 = "March";
+            string item5 = "January";
+            string item6 = "April";
+            
 
-            //assert
-
-            Assert.AreEqual(expectedResult, test[6]);
-            }
-
-
-            public void Remove_ValueFromIndex()
-            {
-
-                MyCustomList<int> test = new MyCustomList<int>();
-            //arrange
-
-            test.Remove(5);
-            test.Remove(10);
-            test.Remove(15);
-            test.Remove(20);
-            test.Remove(25);
-            test.Remove(30);
-            test.Remove(35);
-
-
-
-            int expectedResult = 30 - 35;
+            test.Add(1); 
+            test.Add(2); 
+            test.Add(3); 
+            test.Add(4);
+            test.Add(5);
+            test.Add(6);
+            
 
             //act
-            test.Remove(10);
-            test.RemoveAt(5);
-            MyCustomList<int> actual = test.Remove(30); test.Remove(35);
+            Assert.AreEqual(item1, test[0]);
 
-
-                //assert
-                //remove ints 30, 35 [5, 6]
-                Assert.AreEqual(expectedResult, test[1, 2, 3]);
             }
 
+            [TestMethod]
+            public void Add_DecimalToIndexZero()
+        {
+            //arrange
+            MyCustomList<double> test = new MyCustomList<double>();
 
+            double item = 3.14;
 
+            //assert
+            test.Add(item);
 
-            public void Remove_SingleStringFromIndex()
-            {
-                MyCustomList<string> test = new MyCustomList<string>();
-                //arrange
+            //act
+            Assert.AreEqual(item, test[0]);
 
-                test.Add("one");
-                test.Add("two");
-                test.Add("three");
-                test.Add("four");
-
-
-
-                string expectedResult = "four";
-
-                //act
-                test.Remove("four");
-                test.RemoveAt(3);
-                CustomList<string> actual = test.Add("four");
-
-
-                //assert
-
-                Assert.AreEqual(expectedResult, test[3]);
             }
 
-            public void Remove_MultipleValuesFromIndex()
-            {
-                MyCustomList<int> test = new MyCustomList<int>();
-                //arrange
+        [TestMethod]
+        public void Add_MutipleDecimalsToIndex()
+        {
+            //arrange
+            MyCustomList<double> test = new MyCustomList<double>();
 
-                test.Add(1);
-                test.Add(3);
-                test.Add(6);
-                test.Add(8);
+            double item1 = 0.966;
+            double item2 = 2.59;
+            double item3 = 11.22;
 
-                int expectedResult = 3;
+            //assert
+            test.Add(item1);
+            test.Add(item2);
+            test.Add(item3);
 
-                //act
-                test.Remove(2);
-                test.RemoveAt(2);
-                MyCustomList<int> actual = test.Add(6) + test.Add(8);
-                //assert
-                //remove ints 6, 8 at [2, 3]
-                Assert.AreEqual(expectedResult, test[2, 3]);
-            }
+            //act
+            Assert.AreEqual(item1, test[0]);
 
-
-
-
-            public void Add_MultipleLists()
-            {
-                //arange
-                MyCustomList<int> test1 = new MyCustomList<int>();
-                MyCustomList<int> test2 = new MyCustomList<int>();
-                MyCustomList<int> test3 = new MyCustomList<int>();
-
-                test1.Add(5);
-                test1.Add(10);
-                test1.Add(15);
-                test1.Add(20);
-                test1.Add(25);
-                test2.Add(30);
-                test2.Add(35);
-                test2.Add(40);
-                test2.Add(45);
-                test2.Add(50);
-                test3.Add(55);
-                test3.Add(60);
-                test3.Add(65);
-                test3.Add(70);
-                test3.Add(75);
-
-                int expectedResult = test1 + test2 + test3;
-                MyCustomList<int> actual = test1 + test2 + test3;
-
-                //act
-
-                Assert.AreEqual(expectedResult, actual[0, 0]);
-            }
         }
+        [TestMethod]
+        public void Add_NegativeIntToIndexZero()
+        {
+            //arrange
+            MyCustomList<int> test = new MyCustomList<int>();
+
+            int item1 = -17;
+
+            //assert
+            test.Add(item1);
+
+            //act
+            Assert.AreEqual(item1, test[0]);
+        }
+        [TestMethod]
+        public void Remove_IntFromList()
+        {
+            //arrange
+            MyCustomList<int> test = new MyCustomList<int>();
+
+            int item1 = 10;
+            int item2 = 15;
+            test.Add(item1);
+            test.Add(item2);
+
+            //act
+            test.Remove(item1);
+            
+            //act
+            Assert.AreEqual(item2, test[0]);
+        }
+
+        public void Remove_DecimalFromList()
+        {
+            //arrange
+            MyCustomList<double> test = new MyCustomList<double>();
+
+            double item1 = 6.130;
+            double item2 = 1.59;
+            test.Add(item1);
+            test.Add(item2);
+
+            //act
+            test.Remove(item2);
+
+            //act
+            Assert.AreEqual(item1, test[0]);
+        }
+        [TestMethod]
+        public void Remove_StringFromList()
+        {
+            //arrange
+            MyCustomList<string> test = new MyCustomList<string>();
+
+            string item1 = "Blue";
+            string item2 = "Red";
+            test.Add(item1);
+            test.Add(item2);
+
+            //act
+            test.Remove(item2);
+
+            //act
+            Assert.AreEqual(item1, test[0]);
+        }
+        [TestMethod]
+        public void Remove_NegativeIntsFromList()
+        {
+            //arrange
+            MyCustomList<double> test = new MyCustomList<double>();
+
+            double item1 = -44;
+            double item2 = -3.14;
+            test.Add(item1);
+            test.Add(item2);
+
+            //act
+            test.Remove(item2);
+
+            //act
+            Assert.AreEqual(item1, test[0]);
+        }
+        [TestMethod]
+        public void Remove_NegativeDecimalFromList()
+        {
+            //arrange
+            MyCustomList<double> test = new MyCustomList<double>();
+
+            double item1 = (-2.64);
+            double item2 = (-3.41);
+            double item3 = (-0.16);
+            test.Add(item1);
+            test.Add(item2);
+            test.Add(item3);
+
+            //act
+            test.Remove(item2);
+
+            //act
+            Assert.AreEqual(item1, test[0]);
+        }
+        [TestMethod]
+        public void AddOperator_Ints()
+        {
+            //arrange
+            MyCustomList<int> list1 = new MyCustomList<int>() { 5, 10 };
+            MyCustomList<int> list2 = new MyCustomList<int>() { 15, 20 };
+            MyCustomList<int> list3 = new MyCustomList<int>();
+            MyCustomList<int> expectedResult = new MyCustomList<int>() { 5, 10, 15, 20 };
+
+            //act
+            list3 = (list1 + list2);
+
+            //assert
+            Assert.AreEqual(expectedResult, list3[2]);
+        }
+        
+        [TestMethod]
+        public void AddOperator_Strings()
+        {
+            //arrange
+            MyCustomList<string> list1 = new MyCustomList<string>() { "red", "orange", "yellow" };
+            MyCustomList<string> list2 = new MyCustomList<string>() { "green", "blue", "violet" };
+            MyCustomList<string> list3 = new MyCustomList<string>();
+            MyCustomList<string> expectedResult = new MyCustomList<string>() { "red", "orange", "yellow", "green", "blue", "violet" };
+            
+            //act
+            list3 = (list1 + list2);
+
+            //assert
+            Assert.AreEqual(expectedResult, list3[3]);
+
+        }
+        [TestMethod]
+        public void AddOperator_Decimals()
+        {
+            //arrange
+            MyCustomList<double> list1 = new MyCustomList<double>() { 1.5, 3.5, 5.5, 7.5 };
+            MyCustomList<double> list2 = new MyCustomList<double>() { 2.5, 4.5, 6.5, 8.5 };
+            MyCustomList<double> list3 = new MyCustomList<double>();
+            MyCustomList<string> expectedResult = new MyCustomList<string>() { 1.5, 3.5, 5.5, 7.5, 2.5, 4.5, 6.5, 8.5 };
+
+            //act
+            list3 = (list1 + list2);
+
+            //assert
+            Assert.AreEqual(expectedResult, list3[4]);
+        }
+        [TestMethod]
+        public void AddOperator_StringAndInt()
+        {
+           MyCustomList<string> list1 = new MyCustomList<string>()
+        }
+        
+                
+            }
+
+    
+
+
+         
+               
+            }
+        
     }
 }
